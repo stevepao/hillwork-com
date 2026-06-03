@@ -90,7 +90,7 @@ export default function App() {
     {
       id: 'ceo-adv',
       title: 'CEO Advisory',
-      description: 'Direct, private work with founders and CEOs on the decisions that don\'t fit neatly into a team meeting — positioning, fundraising framing, org design, what to do when the roadmap stops making sense.',
+      description: 'Direct, private work with founders and CEOs on the decisions that don\'t fit neatly into a team meeting. Positioning, fundraising framing, org design, what to do when the roadmap stops making sense.',
       category: 'core',
       highlight: 'Direct Coaching'
     },
@@ -279,7 +279,7 @@ export default function App() {
                 </h1>
 
                 <p className="mt-5 text-base sm:text-lg text-stone-500 font-normal leading-relaxed max-w-xl">
-                  Board advisor, interim executive, and early-stage investor — working directly with founders and CEOs who need someone who's already made the mistakes.
+                  Board advisor, interim executive, and early-stage investor. I work directly with founders and CEOs who need someone who has already made the mistakes.
                 </p>
               </div>
 
@@ -367,13 +367,13 @@ export default function App() {
 
               <div className="mt-6 space-y-5 text-sm sm:text-base text-stone-500 font-normal leading-relaxed">
                 <p>
-                  I've been a product manager at Oracle when the database market was being defined, and a product executive at Barracuda Networks and Latitude Communications through two successful exits. I'm a technology person — I understand how products get built, not just how they get sold.
+                  I've been a product manager at Oracle when the database market was being defined, and a product executive at Barracuda Networks and Latitude Communications through their public offerings on the NYSE and NASDAQ. I'm a technology person. I understand how products get built, not just how they get sold.
                 </p>
                 <p>
                   The problems I see most often aren't new: founders who are right about their product but wrong about how to explain it, CEOs who need someone in the room who isn't on the payroll, teams that are moving fast but on a shaky foundation. I've been on both sides of those problems.
                 </p>
                 <p>
-                  I work directly — no associates, no firm. If you're talking to me, I'm the one doing the work.
+                  I work directly. No associates, no firm. If you're talking to me, I'm the one doing the work.
                 </p>
               </div>
             </div>
@@ -484,9 +484,9 @@ export default function App() {
                 <TrendingUp size={18} className="text-blue-600" />
               </div>
               <div>
-                <h3 className="font-display font-extrabold text-stone-900 text-lg">Two Exits</h3>
+                <h3 className="font-display font-extrabold text-stone-900 text-lg">Two IPOs</h3>
                 <p className="mt-2 text-stone-500 text-sm leading-relaxed">
-                  I've been through two exits. I know what the scaling phase actually feels like from inside the building.
+                  Barracuda went public on the NYSE and Latitude on the NASDAQ while I was an executive at each. I know what the scaling phase feels like from inside the building.
                 </p>
               </div>
             </div>
