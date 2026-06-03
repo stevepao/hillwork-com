@@ -1,7 +1,7 @@
+.git/
 node_modules/
 dist/
 vendor/
-/assets/
 
 .env
 .env.*
@@ -13,4 +13,4 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-server.js
+assets/

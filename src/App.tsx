@@ -27,26 +27,55 @@ import {
   Send
 } from 'lucide-react';
 
+const portraitImage = new URL('./assets/images/portrait_stephen_pao.png', import.meta.url).href;
+const techDnaImage = new URL('./assets/images/tech_dna_1780509815040.png', import.meta.url).href;
+const slateSlabImage = new URL('./assets/images/slate_slab_1780509798621.png', import.meta.url).href;
+
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'core' | 'functional'>('all');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
+    website: ''
   });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setContactModalOpen(false);
-      setFormData({ name: '', email: '', company: '', message: '' });
-    }, 2500);
+    setFormSubmitting(true);
+    setFormError('');
+
+    try {
+      const response = await fetch('/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        throw new Error(result?.error || 'Unable to send message right now.');
+      }
+
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setFormSubmitted(false);
+        setContactModalOpen(false);
+        setFormData({ name: '', email: '', company: '', message: '', website: '' });
+      }, 2500);
+    } catch (error) {
+      setFormError(error instanceof Error ? error.message : 'Unable to send message right now.');
+    } finally {
+      setFormSubmitting(false);
+    }
   };
 
   // Content Arrays for Practice Areas & Services
@@ -263,7 +292,10 @@ export default function App() {
                   Explore Practice Areas
                 </a>
                 <button
-                  onClick={() => setContactModalOpen(true)}
+                  onClick={() => {
+                    setFormError('');
+                    setContactModalOpen(true);
+                  }}
                   className="inline-flex items-center justify-center border border-stone-350 text-stone-800 font-semibold text-xs tracking-widest uppercase bg-stone-55 hover:bg-stone-100 transition-all duration-300 py-3.5 px-6 rounded-full"
                 >
                   Direct Message
@@ -273,17 +305,12 @@ export default function App() {
 
             {/* PORTRAIT IMAGE CARD - 5 Columns of Bento Cell */}
             <div className="lg:col-span-5 bg-white rounded-3xl p-4 shadow-sm border border-stone-200 flex flex-col relative overflow-hidden transition-all duration-300 hover:shadow-md min-h-[440px]">
-              <div className="relative w-full h-full bg-gradient-to-br from-stone-200 via-stone-100 to-sky-100 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center group">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.22),transparent_32%),radial-gradient(circle_at_80%_80%,rgba(79,70,229,0.14),transparent_34%)] transition-transform duration-700 group-hover:scale-105" />
-                <div className="relative z-10 flex flex-col items-center justify-center text-center px-8">
-                  <div className="h-28 w-28 rounded-full bg-white/80 border border-white shadow-sm flex items-center justify-center">
-                    <span className="font-display text-4xl font-black text-stone-900 tracking-tight">SP</span>
-                  </div>
-                  <h2 className="mt-6 font-display text-2xl font-extrabold text-stone-900">Stephen Pao</h2>
-                  <p className="mt-2 max-w-xs text-sm uppercase tracking-[0.2em] font-mono font-bold text-stone-500">
-                    Strategic Advisory
-                  </p>
-                </div>
+              <div className="relative w-full h-full bg-stone-100 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center group">
+                <img
+                  src={portraitImage}
+                  alt="Stephen Pao Portrait"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.025]"
+                />
                 
                 {/* Blueprint details */}
                 <div className="absolute right-4 bottom-4 z-20 bg-stone-900/90 backdrop-blur-md text-white py-2 px-3 rounded-xl border border-stone-800 flex items-center gap-2">
@@ -353,18 +380,13 @@ export default function App() {
 
             {/* ART WORKSPACE CARD - 5 columns */}
             <div className="lg:col-span-5 bg-white rounded-3xl p-4 border border-stone-200 shadow-sm flex flex-col justify-center min-h-[340px]">
-              <div className="relative w-full h-full bg-stone-100 rounded-2xl overflow-hidden shadow-inner min-h-[280px] group">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.08)_25%,transparent_25%,transparent_50%,rgba(15,23,42,0.08)_50%,rgba(15,23,42,0.08)_75%,transparent_75%,transparent)] bg-size-[28px_28px] transition-transform duration-700 group-hover:scale-105"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-200/60 via-white/40 to-indigo-200/60"></div>
-                <div className="absolute left-8 bottom-8 right-8 z-10 grid grid-cols-3 gap-3">
-                  {[...Array(9)].map((_, index) => (
-                    <div
-                      key={index}
-                      className="h-12 rounded-xl border border-white/70 bg-white/55 shadow-sm backdrop-blur-sm"
-                    />
-                  ))}
-                </div>
-                <div className="absolute inset-0 bg-stone-900/5 mix-blend-multiply"></div>
+              <div className="relative w-full h-full bg-stone-100 rounded-2xl overflow-hidden shadow-inner min-h-[280px]">
+                <img
+                  src={techDnaImage}
+                  alt="Silicon Valley Executive Advisory Desk"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-stone-900/10 mix-blend-multiply"></div>
                 
                 {/* Tech overlay label */}
                 <div className="absolute left-4 top-4 z-15 bg-white/95 backdrop-blur-sm shadow-sm py-1.5 px-3 rounded-lg border border-stone-200">
@@ -477,7 +499,11 @@ export default function App() {
       <section className="py-6 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative bg-stone-950 text-white rounded-3xl p-10 md:p-16 text-center overflow-hidden border border-stone-900 shadow-md group">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.16),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.08)_0_1px,transparent_1px_18px)] opacity-80 group-hover:scale-105 transition-transform duration-[4000ms] pointer-events-none" />
+            <img
+              src={slateSlabImage}
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-[4000ms] pointer-events-none"
+            />
             {/* Subtle radial light mask */}
             <div className="absolute inset-0 bg-radial-[circle_at_center,rgba(28,25,23,0.3),rgba(12,10,9,0.95)] pointer-events-none"></div>
             
@@ -860,12 +886,32 @@ export default function App() {
                     />
                   </div>
 
+                  <div className="hidden" aria-hidden="true">
+                    <label>
+                      Website
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={formData.website}
+                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                      />
+                    </label>
+                  </div>
+
+                  {formError && (
+                    <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                      {formError}
+                    </p>
+                  )}
+
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-bold text-xs tracking-widest uppercase py-4 rounded-full transition-all hover:bg-black"
+                      disabled={formSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-bold text-xs tracking-widest uppercase py-4 rounded-full transition-all hover:bg-black disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      Send Message <Send size={12} className="text-sky-400" />
+                      {formSubmitting ? 'Sending...' : <>Send Message <Send size={12} className="text-sky-400" /></>}
                     </button>
                   </div>
                 </form>
