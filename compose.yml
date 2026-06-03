@@ -2,6 +2,10 @@ services:
   hillwork:
     build:
       context: .
+    networks:
+      proxy-tier:
+        aliases:
+          - hillwork
     ports:
       - "${APP_PORT:-8080}:80"
     environment:
@@ -12,3 +16,7 @@ services:
       SMTP_PASS: "${SMTP_PASS:-}"
       CONTACT_TO: "${CONTACT_TO:-}"
       CONTACT_FROM: "${CONTACT_FROM:-}"
+
+networks:
+  proxy-tier:
+    external: true
