@@ -83,21 +83,21 @@ export default function App() {
     {
       id: 'board-adv',
       title: 'Board Advisory',
-      description: 'Serving as a board advisor to early stage technology companies to provide strategic oversight and guidance.',
+      description: 'I join boards of early-stage companies where founders need a voice with operating experience, not just pattern-matching from a distance.',
       category: 'core',
       highlight: 'Strategic Oversight'
     },
     {
       id: 'ceo-adv',
       title: 'CEO Advisory',
-      description: 'Providing direct advisory and consulting services to CEOs of technology companies.',
+      description: 'Direct, private work with founders and CEOs on the decisions that don\'t fit neatly into a team meeting — positioning, fundraising framing, org design, what to do when the roadmap stops making sense.',
       category: 'core',
       highlight: 'Direct Coaching'
     },
     {
       id: 'interim-exec',
       title: 'Interim Executive Assignments',
-      description: 'Taking on temporary executive leadership roles to manage business transitions or growth.',
+      description: 'When you need someone in the seat, not on retainer. I\'ve stepped into executive roles during transitions and know how to move fast without breaking the organization.',
       category: 'core',
       highlight: 'Hands-on Leadership'
     }
@@ -107,28 +107,28 @@ export default function App() {
     {
       id: 'messaging-positioning',
       title: 'Messaging and Product Positioning',
-      description: 'Developing clear brand messaging and strategic product positioning for technology startups.',
+      description: 'Most early-stage companies can\'t see their own product the way a buyer sees it. I can. I help close the gap between what you built and what the market hears.',
       category: 'functional',
       highlight: 'Brand Clarity'
     },
     {
       id: 'product-mgmt',
       title: 'Product Management',
-      description: 'Providing professional expertise in product management, strategy, and development.',
+      description: 'From roadmap prioritization to build-vs-buy decisions, I bring a PM\'s discipline and an executive\'s perspective on what actually ships and what matters once it does.',
       category: 'functional',
       highlight: 'Strategic Roadmaps'
     },
     {
       id: 'product-mktg',
       title: 'Product Marketing',
-      description: 'Leading product marketing efforts to effectively reach and engage target markets.',
+      description: 'The gap between a good product and a product people understand is almost always a marketing problem. I help close it.',
       category: 'functional',
       highlight: 'Go-to-Market'
     },
     {
       id: 'life-coaching',
       title: 'Life Coaching',
-      description: 'Providing personal coaching services focused on life and professional development.',
+      description: 'For founders and executives who want a thought partner, not a cheerleader. I\'ll tell you what I actually think.',
       category: 'functional',
       highlight: 'Personal Evolution'
     }
@@ -273,13 +273,13 @@ export default function App() {
 
               {/* Main Content */}
               <div className="my-8 lg:my-10">
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono font-extrabold text-stone-400 block mb-2">FOUNDER PROFILE</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-mono font-extrabold text-stone-400 block mb-2">ADVISOR PROFILE</span>
                 <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-5xl text-stone-900 tracking-tight leading-[1.15]">
-                  Consultant, board advisor, and early-stage investor.
+                  I've been in the room. Now I help you navigate it.
                 </h1>
-                
+
                 <p className="mt-5 text-base sm:text-lg text-stone-500 font-normal leading-relaxed max-w-xl">
-                  I provide strategic advisory and interim executive services to early-stage technology companies, specializing in product positioning, messaging, and CEO mentorship.
+                  Board advisor, interim executive, and early-stage investor — working directly with founders and CEOs who need someone who's already made the mistakes.
                 </p>
               </div>
 
@@ -332,7 +332,7 @@ export default function App() {
             <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
               <span className="h-2 w-2 bg-sky-500 rounded-full shrink-0"></span>
               <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
-                Experience-Led Expertise
+                What I've Seen
               </span>
             </div>
             <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
@@ -362,18 +362,18 @@ export default function App() {
             <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-stone-200 shadow-sm flex flex-col justify-center">
               <span className="text-[10px] uppercase tracking-[0.2em] font-mono font-bold text-stone-400 mb-3 block">CORE COMPETENCY</span>
               <h2 className="font-display font-bold text-3xl sm:text-4xl text-stone-900 tracking-tight leading-tight">
-                Elite advisory with deep Tech DNA.
+                Pattern recognition, not theory.
               </h2>
-              
+
               <div className="mt-6 space-y-5 text-sm sm:text-base text-stone-500 font-normal leading-relaxed">
                 <p>
-                  I provide elite executive advisory services for tech startups, emphasizing a deep 'Tech DNA' and a proven track record of scaling businesses from early-stage to IPO. All engagements are direct, one-on-one partnerships, ensuring you work personally with me.
+                  I've been a product manager at Oracle when the database market was being defined, and a product executive at Barracuda Networks and Latitude Communications through two successful exits. I'm a technology person — I understand how products get built, not just how they get sold.
                 </p>
                 <p>
-                  Leveraging foundational knowledge from MIT and specific experience at industry giants like Oracle, I bring hands-on expertise from my role as a critical executive team member driving successful market exits at Barracuda Networks and Latitude Communications.
+                  The problems I see most often aren't new: founders who are right about their product but wrong about how to explain it, CEOs who need someone in the room who isn't on the payroll, teams that are moving fast but on a shaky foundation. I've been on both sides of those problems.
                 </p>
                 <p>
-                  In addition to advisory roles, I actively participate as an investor in early-stage companies, supporting promising founders and bringing a wealth of go-to-market knowledge to the boardroom.
+                  I work directly — no associates, no firm. If you're talking to me, I'm the one doing the work.
                 </p>
               </div>
             </div>
@@ -383,14 +383,14 @@ export default function App() {
               <div className="relative w-full h-full bg-stone-100 rounded-2xl overflow-hidden shadow-inner min-h-[280px]">
                 <img
                   src={techDnaImage}
-                  alt="Silicon Valley Executive Advisory Desk"
+                  alt="Tech DNA"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-stone-900/10 mix-blend-multiply"></div>
                 
                 {/* Tech overlay label */}
                 <div className="absolute left-4 top-4 z-15 bg-white/95 backdrop-blur-sm shadow-sm py-1.5 px-3 rounded-lg border border-stone-200">
-                  <span className="font-mono text-[9px] tracking-wider text-stone-700 font-bold uppercase">Silicon Valley Execution</span>
+                  <span className="font-mono text-[9px] tracking-wider text-stone-700 font-bold uppercase">Oracle · Barracuda · Latitude</span>
                 </div>
               </div>
             </div>
@@ -472,9 +472,9 @@ export default function App() {
                 <Compass size={18} className="text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-display font-extrabold text-stone-900 text-lg">Selective Market</h3>
+                <h3 className="font-display font-extrabold text-stone-900 text-lg">By Referral</h3>
                 <p className="mt-2 text-stone-500 text-sm leading-relaxed">
-                  I partner exclusively with early-stage technology companies positioned for strategic growth and critical disruption.
+                  I work with a small number of companies at a time, by referral. If someone sent you here, that's why.
                 </p>
               </div>
             </div>
@@ -484,9 +484,9 @@ export default function App() {
                 <TrendingUp size={18} className="text-blue-600" />
               </div>
               <div>
-                <h3 className="font-display font-extrabold text-stone-900 text-lg">Proven Trajectory</h3>
+                <h3 className="font-display font-extrabold text-stone-900 text-lg">Two Exits</h3>
                 <p className="mt-2 text-stone-500 text-sm leading-relaxed">
-                  I guide functional utility, identity, and board governance through critical scaling phases to successful exits list.
+                  I've been through two exits. I know what the scaling phase actually feels like from inside the building.
                 </p>
               </div>
             </div>
@@ -533,7 +533,7 @@ export default function App() {
               Practice Areas
             </h2>
             <p className="mt-3 text-stone-500 text-sm sm:text-base leading-relaxed">
-              I offer comprehensive advisory and executive services designed to manage business transitions, refine positioning, and drive technological innovation.
+              Direct engagements only. Every service below is something I do personally, drawn from roles I've actually held.
             </p>
           </div>
 
@@ -631,10 +631,10 @@ export default function App() {
                 <Clock size={12} className="inline" /> AVAILABLE FOR ADVISORY
               </div>
               <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-stone-100">
-                Need expert strategic direction?
+                If someone sent you here, reach out.
               </h3>
               <p className="mt-2 text-stone-450 text-sm sm:text-base">
-                Book a direct, personal 60-minute session to discuss product-market fit, fundraising strategies, or operational excellence.
+                A 60-minute conversation costs nothing and usually makes it clear whether working together makes sense.
               </p>
             </div>
             
@@ -668,7 +668,7 @@ export default function App() {
                   <span className="h-2.5 w-2.5 rounded-full bg-sky-500 inline-block translate-y-[2px]"></span>
                 </a>
                 <p className="mt-6 text-sm text-stone-500 font-normal leading-relaxed">
-                  The independent professional practice of Stephen Pao, providing strategic advisory, early-stage investing, and interim executive services through direct, personal engagements.
+                  The independent practice of Stephen Pao. All work is direct and personal.
                 </p>
               </div>
 
@@ -717,7 +717,7 @@ export default function App() {
               <div>
                 <span className="text-stone-400 text-xs font-bold uppercase tracking-widest font-mono block mb-4 px-2">Writing & Channels</span>
                 <p className="text-xs text-stone-500 mb-6 px-2 leading-relaxed">
-                  Join my professional and personal networks for strategic insights, executive coaching, and stories from the Portland community.
+                  Writing, talks, and community — where I think out loud about technology, product, and life in Portland.
                 </p>
               </div>
 
@@ -812,10 +812,10 @@ export default function App() {
                   DIRECT ENGAGEMENT
                 </span>
                 <h3 className="font-display font-extrabold text-2xl text-stone-900 mt-3">
-                  Contact Stephen Pao
+                  Tell me what you're working on.
                 </h3>
                 <p className="text-sm text-stone-500 mt-1">
-                  Send a brief overview of your business or inquiry to connect.
+                  I read everything and respond personally.
                 </p>
               </div>
 
@@ -826,7 +826,7 @@ export default function App() {
                   </div>
                   <h4 className="font-display font-bold text-lg text-stone-900">Inquiry Received</h4>
                   <p className="text-sm text-stone-500 mt-1 max-w-xs mx-auto">
-                    Thank you. Your message has been sent successfully. Stephen will reach out to you shortly.
+                    Got it. Stephen will read this and reach out personally.
                   </p>
                 </div>
               ) : (
@@ -881,7 +881,7 @@ export default function App() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="How can Stephen help your organization?"
+                      placeholder="What are you working on?"
                       className="w-full px-4 py-3 bg-stone-50 border border-stone-200 text-sm focus:outline-none focus:border-stone-900 focus:bg-white transition-all rounded-xl resize-none"
                     />
                   </div>
