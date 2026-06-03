@@ -83,14 +83,14 @@ export default function App() {
     {
       id: 'board-adv',
       title: 'Board Advisory',
-      description: 'I join boards of early-stage companies where founders need a voice with operating experience, not just pattern-matching from a distance.',
+      description: 'I join boards of early-stage and growth-stage companies where founders and executives need a voice with operating experience, not just pattern-matching from a distance.',
       category: 'core',
       highlight: 'Strategic Oversight'
     },
     {
       id: 'ceo-adv',
       title: 'CEO Advisory',
-      description: 'Direct, private work with founders and CEOs on the decisions that don\'t fit neatly into a team meeting. Positioning, fundraising framing, org design, what to do when the roadmap stops making sense.',
+      description: 'Direct, private work with founders, CEOs, and executives on the decisions that don\'t fit neatly into a team meeting. Positioning, fundraising framing, org design, what to do when the roadmap stops making sense.',
       category: 'core',
       highlight: 'Direct Coaching'
     },
@@ -107,7 +107,7 @@ export default function App() {
     {
       id: 'messaging-positioning',
       title: 'Messaging and Product Positioning',
-      description: 'Most early-stage companies can\'t see their own product the way a buyer sees it. I can. I help close the gap between what you built and what the market hears.',
+      description: 'Most companies can\'t see their own product the way a buyer sees it. I can. I help close the gap between what you built and what the market hears.',
       category: 'functional',
       highlight: 'Brand Clarity'
     },
@@ -128,7 +128,7 @@ export default function App() {
     {
       id: 'life-coaching',
       title: 'Life Coaching',
-      description: 'For founders and executives who want a thought partner, not a cheerleader. I\'ll tell you what I actually think.',
+      description: 'For founders, CEOs, and executives who want a thought partner, not a cheerleader. I\'ll tell you what I actually think.',
       category: 'functional',
       highlight: 'Personal Evolution'
     }
@@ -279,7 +279,7 @@ export default function App() {
                 </h1>
 
                 <p className="mt-5 text-base sm:text-lg text-stone-500 font-normal leading-relaxed max-w-xl">
-                  Board advisor, interim executive, and early-stage investor. I work directly with founders and CEOs who need someone who has already made the mistakes.
+                  Board advisor, interim executive, and early-stage investor. I work directly with founders, CEOs, and executives at early-stage and growth-stage companies who need someone who has already made the mistakes.
                 </p>
               </div>
 
@@ -373,6 +373,8 @@ export default function App() {
                   The problems I see most often aren't new. Founders who are right about their product but wrong about how to explain it. CEOs who need someone in the room who isn't on the payroll. Teams that are moving fast but on a shaky foundation. I've been on both sides of those problems.
                 </p>
                 <p>
+                  Before and between those, I was the first product manager at Visioneer pre-IPO, and led teams at AskMe and Igneous Systems across collaboration, big data, and enterprise software. Not every swing connects, and I've had my share of those too.
+
                   I work directly. No associates, no firm. If you're talking to me, I'm the one doing the work.
                 </p>
               </div>
@@ -390,7 +392,7 @@ export default function App() {
                 
                 {/* Tech overlay label */}
                 <div className="absolute left-4 top-4 z-15 bg-white/95 backdrop-blur-sm shadow-sm py-1.5 px-3 rounded-lg border border-stone-200">
-                  <span className="font-mono text-[9px] tracking-wider text-stone-700 font-bold uppercase">Oracle · Barracuda · Latitude</span>
+                  <span className="font-mono text-[9px] tracking-wider text-stone-700 font-bold uppercase">Oracle · Latitude · Barracuda</span>
                 </div>
               </div>
             </div>
@@ -474,7 +476,7 @@ export default function App() {
               <div>
                 <h3 className="font-display font-extrabold text-stone-900 text-lg">By Referral</h3>
                 <p className="mt-2 text-stone-500 text-sm leading-relaxed">
-                  I work with a small number of companies at a time, by referral. If someone sent you here, that's why.
+                  I work with a small number of early-stage and growth-stage companies at a time, by referral. If someone sent you here, that's why.
                 </p>
               </div>
             </div>
