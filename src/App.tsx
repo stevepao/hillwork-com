@@ -370,7 +370,7 @@ export default function App() {
                   I've been a product manager at Oracle when the database market was being defined, and a product executive at Barracuda Networks and Latitude Communications through their public offerings on the NYSE and NASDAQ. I'm a technology person. I understand how products get built, not just how they get sold.
                 </p>
                 <p>
-                  The problems I see most often aren't new: founders who are right about their product but wrong about how to explain it, CEOs who need someone in the room who isn't on the payroll, teams that are moving fast but on a shaky foundation. I've been on both sides of those problems.
+                  The problems I see most often aren't new. Founders who are right about their product but wrong about how to explain it. CEOs who need someone in the room who isn't on the payroll. Teams that are moving fast but on a shaky foundation. I've been on both sides of those problems.
                 </p>
                 <p>
                   I work directly. No associates, no firm. If you're talking to me, I'm the one doing the work.
