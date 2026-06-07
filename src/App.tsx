@@ -27,9 +27,9 @@ import {
   Send
 } from 'lucide-react';
 
-const portraitImage = new URL('./assets/images/portrait_stephen_pao.png', import.meta.url).href;
-const techDnaImage = new URL('./assets/images/tech_dna_1780509815040.png', import.meta.url).href;
-const slateSlabImage = new URL('./assets/images/slate_slab_1780509798621.png', import.meta.url).href;
+const portraitImage = new URL('./assets/images/portrait_stephen_pao.webp', import.meta.url).href;
+const techDnaImage = new URL('./assets/images/tech_dna_1780509815040.webp', import.meta.url).href;
+const slateSlabImage = new URL('./assets/images/slate_slab_1780509798621.webp', import.meta.url).href;
 const turnstileScriptUrl = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 
 declare global {
