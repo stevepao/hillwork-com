@@ -16,6 +16,8 @@ services:
       SMTP_PASS: "${SMTP_PASS:-}"
       CONTACT_TO: "${CONTACT_TO:-}"
       CONTACT_FROM: "${CONTACT_FROM:-}"
+      TURNSTILE_SITE_KEY: "${TURNSTILE_SITE_KEY:-}"
+      TURNSTILE_SECRET_KEY: "${TURNSTILE_SECRET_KEY:-}"
 
 networks:
   proxy-tier:

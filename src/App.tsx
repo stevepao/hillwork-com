@@ -1,9 +1,9 @@
 /**
- * @license
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-FileCopyrightText: 2026 Hillwork, LLC
+ * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Instagram, 
@@ -30,6 +30,25 @@ import {
 const portraitImage = new URL('./assets/images/portrait_stephen_pao.png', import.meta.url).href;
 const techDnaImage = new URL('./assets/images/tech_dna_1780509815040.png', import.meta.url).href;
 const slateSlabImage = new URL('./assets/images/slate_slab_1780509798621.png', import.meta.url).href;
+const turnstileScriptUrl = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          callback: (token: string) => void;
+          'expired-callback': () => void;
+          'error-callback': () => void;
+        }
+      ) => string;
+      remove: (widgetId: string) => void;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,6 +57,11 @@ export default function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
+  const [turnstileReady, setTurnstileReady] = useState(false);
+  const [turnstileSiteKey, setTurnstileSiteKey] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,18 +70,97 @@ export default function App() {
     website: ''
   });
 
+  useEffect(() => {
+    fetch('/config.php')
+      .then((response) => response.ok ? response.json() : null)
+      .then((config) => {
+        if (config?.turnstileSiteKey) {
+          setTurnstileSiteKey(config.turnstileSiteKey);
+        }
+      })
+      .catch(() => {
+        // The Vite dev server does not provide the PHP config endpoint.
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!turnstileSiteKey) {
+      return;
+    }
+
+    if (window.turnstile) {
+      setTurnstileReady(true);
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${turnstileScriptUrl}"]`);
+    const script = existingScript ?? document.createElement('script');
+
+    const handleLoad = () => setTurnstileReady(true);
+    const handleError = () => setFormError('Anti-spam check could not load. Please try again later.');
+
+    script.addEventListener('load', handleLoad);
+    script.addEventListener('error', handleError);
+
+    if (!existingScript) {
+      script.src = turnstileScriptUrl;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      script.removeEventListener('load', handleLoad);
+      script.removeEventListener('error', handleError);
+    };
+  }, [turnstileSiteKey]);
+
+  useEffect(() => {
+    if (!contactModalOpen || !turnstileReady || !turnstileSiteKey || !turnstileContainerRef.current || !window.turnstile) {
+      return;
+    }
+
+    turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: turnstileSiteKey,
+      callback: (token) => {
+        setTurnstileToken(token);
+        setFormError('');
+      },
+      'expired-callback': () => setTurnstileToken(''),
+      'error-callback': () => {
+        setTurnstileToken('');
+        setFormError('Anti-spam check failed. Please try again.');
+      },
+    });
+
+    return () => {
+      if (turnstileWidgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+      }
+      turnstileWidgetIdRef.current = null;
+      setTurnstileToken('');
+    };
+  }, [contactModalOpen, turnstileReady, turnstileSiteKey]);
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitting(true);
     setFormError('');
 
     try {
+      if (turnstileSiteKey && !turnstileToken) {
+        throw new Error('Please complete the anti-spam check before sending.');
+      }
+
       const response = await fetch('/contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken,
+        }),
       });
 
       if (!response.ok) {
@@ -70,9 +173,14 @@ export default function App() {
         setFormSubmitted(false);
         setContactModalOpen(false);
         setFormData({ name: '', email: '', company: '', message: '', website: '' });
+        setTurnstileToken('');
       }, 2500);
     } catch (error) {
       setFormError(error instanceof Error ? error.message : 'Unable to send message right now.');
+      if (turnstileWidgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetIdRef.current);
+        setTurnstileToken('');
+      }
     } finally {
       setFormSubmitting(false);
     }
@@ -900,6 +1008,12 @@ export default function App() {
                       />
                     </label>
                   </div>
+
+                  {turnstileSiteKey && (
+                    <div className="min-h-[65px]">
+                      <div ref={turnstileContainerRef} />
+                    </div>
+                  )}
 
                   {formError && (
                     <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">

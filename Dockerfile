@@ -25,6 +25,7 @@ RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --opt
 
 COPY --from=frontend /app/dist /var/www/html
 COPY server/contact.php /var/www/html/contact.php
+COPY server/config.php /var/www/html/config.php
 COPY docker/apache-site.conf /etc/apache2/sites-available/000-default.conf
 
 RUN chown -R www-data:www-data /var/www/html /var/www/vendor
